@@ -60,8 +60,6 @@
 
 		html += '</div>'; // gamepad-button-box
 
-		outer.innerHTML = html;
-
 		// axes
 		html += '<div class="gamepad-axes-box">';
 
