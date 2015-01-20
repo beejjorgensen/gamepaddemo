@@ -26,10 +26,17 @@
 		var index = gamepad.index;
 		var i, e, e2, e3, html;
 		var padElemStruct = {};
+		var gamepadsElem = eid('gamepads');
 
-		var outer = eid('gamepads').children[gamepad.index];
+		// insert empty divs as necessary, up through this index
+		for (i = 0; i <= index; i++) {
+			if (!gamepadsElem.children[i]) {
+				var newDiv = document.createElement('div');
+				gamepadsElem.appendChild(newDiv);
+			}
+		}
 
-		if (!outer) { outer = ce('div'); };
+		var outer = gamepadsElem.children[gamepad.index];
 
 		padElemStruct.elem = outer;
 		padElemStruct.index = index;
@@ -97,9 +104,6 @@
 		padElemStruct.axes = outer.querySelector('.gamepad-axes-box');
 
 		padElem[index] = padElemStruct;
-
-		var childAfter = eid('gamepads').children[index+1];
-		eid('gamepads').insertBefore(outer, childAfter);
 	}
 
 	/**
